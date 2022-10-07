@@ -20,7 +20,7 @@ line-height: 5rem;
   }
 `;
 
-const Square = (value, onClick) => (
+const Square = ({value, onClick}) => (
   <SquareContainer onClick={onClick}>{value}</SquareContainer>
 );
 
