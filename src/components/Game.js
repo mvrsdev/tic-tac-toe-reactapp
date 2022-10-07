@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Board } from './index';
+import { Board, ResetButton, ScoreBoard } from './index';
 
 const GameContainer = styled.div`
   height: 100vh;
@@ -29,8 +29,8 @@ const Game = () => {
 
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xTurn, setXTurn] = useState(true);
-  const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState({ xScore: 0, oScore: 0 });
+  const [gameOver, setGameOver] = useState(false);
 
   const onClickHandler = (squareIdx) => {
     const updatedBoard = board.map((value, idx) => {
@@ -41,28 +41,28 @@ const Game = () => {
       }
     });
 
-    setBoard(updatedBoard);
-    setXTurn(!xTurn);
-
-    const checkWinner = (board) => {
-      for (let i = 0; i > WIN_CONDITIONS.length; i++) {
-        const [x, y, z] = WIN_CONDITIONS[i];
-        if (board[x] && board[x] === board[y] && board[y] === board[z]) {
-          setGameOver(true);
-          return board[x];
-        }
-      }
-    };
-
     const winner = checkWinner(updatedBoard);
-    if (winner === 'X') {
-      let { xScore } = score;
-      xScore += 1;
-      setScore({ ...score, xScore });
-    } else if (winner === 'O') {
+    if (winner === 'O') {
       let { oScore } = score;
       oScore += 1;
       setScore({ ...score, oScore });
+    } else if (winner === 'X') {
+      let { xScore } = score;
+      xScore += 1;
+      setScore({ ...score, xScore });
+    }
+
+    setBoard(updatedBoard);
+    setXTurn(!xTurn);
+  };
+
+  const checkWinner = (board) => {
+    for (let i = 0; i < WIN_CONDITIONS.length; i++) {
+      const [x, y, z] = WIN_CONDITIONS[i];
+      if (board[x] && board[x] === board[y] && board[y] === board[z]) {
+        setGameOver(true);
+        return board[x];
+      }
     }
   };
 
@@ -73,7 +73,9 @@ const Game = () => {
 
   return (
     <GameContainer>
+      <ScoreBoard scores={score} />
       <Board board={board} onClick={gameOver ? resetBoard : onClickHandler} />
+      <ResetButton resetBoard={resetBoard} />
     </GameContainer>
   );
 };
