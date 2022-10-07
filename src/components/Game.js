@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import Square from './Square';
-
+import { Board } from './index';
 
 const GameContainer = styled.div`
   box-sizing: border-box;
@@ -17,9 +16,9 @@ const GameContainer = styled.div`
 `;
 
 const Game = () => {
-  return ( 
+  return (
     <GameContainer>
-      <Square value='X'/>
+      <Board />
     </GameContainer>
   );
 };
