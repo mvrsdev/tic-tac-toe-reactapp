@@ -1,11 +1,15 @@
 body {
   margin: 0;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Fredoka One', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+* {
+  font-family: inherit;
+}
+
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
