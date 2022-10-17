@@ -7,8 +7,7 @@ const GameContainer = styled.div`
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-color: #efefef;
-  font-family: 'Fredoka', sans-serif;
+  background-color: ${props => props.theme.backgroundColor};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,7 +72,7 @@ const Game = () => {
 
   return (
     <GameContainer>
-      <ScoreBoard scores={score} />
+      <ScoreBoard xTurn={xTurn} scores={score} />
       <Board board={board} onClick={gameOver ? resetBoard : onClickHandler} />
       <ResetButton resetBoard={resetBoard} />
     </GameContainer>

@@ -12,7 +12,7 @@ const Board = ({ board, onClick }) => (
   <BoardContainer>
     {board.map((value, idx) => {
       return (
-        <Square value={value} onClick={() => value === null && onClick(idx)} />
+        <Square key={idx} value={value} onClick={() => value === null && onClick(idx)} />
       );
     })}
   </BoardContainer>

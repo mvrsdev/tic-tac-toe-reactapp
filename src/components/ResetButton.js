@@ -8,9 +8,9 @@ const ResetContainer = styled.button`
   padding: 0.5rem 1rem;
   margin: 2rem auto;
   display: block;
-  background-color: #4287f5;
+  background-color: ${(props) => props.theme.resetColor};
   &:hover {
-    box-shadow: 0 0 8px #66a1ff;
+    box-shadow: 0 0 8px ${(props) => props.theme.resetColor};
   }
   &:active {
     filter: brightness(85%);
